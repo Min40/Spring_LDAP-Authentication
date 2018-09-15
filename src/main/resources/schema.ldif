@@ -1,0 +1,42 @@
+//  You can generate your password hash (http://aspirine.org/htpasswd_en.html)and place it in the userPassword field.
+//  https://memorynotfound.com/spring-security-spring-ldap-authentication-example/
+dn: dc=memorynotfound,dc=com
+objectclass: top
+objectclass: domain
+objectclass: extensibleObject
+dc: memorynotfound
+
+dn: ou=groups,dc=memorynotfound,dc=com
+objectclass: top
+objectclass: organizationalUnit
+ou: groups
+
+dn: ou=people,dc=memorynotfound,dc=com
+objectclass: top
+objectclass: organizationalUnit
+ou: people
+
+
+dn: uid=john,ou=people,dc=memorynotfound,dc=com
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+cn: John Doe
+uid: john
+userPassword: {SHA}5en6G6MezRroT3XKqkdPOmY/BfQ=
+
+
+dn: cn=developers,ou=groups,dc=memorynotfound,dc=com
+objectclass: top
+objectclass: groupOfUniqueNames
+cn: developers
+ou: developer
+uniqueMember: uid=john,ou=people,dc=memorynotfound,dc=com
+
+dn: cn=managers,ou=groups,dc=memorynotfound,dc=com
+objectclass: top
+objectclass: groupOfUniqueNames
+cn: admin
+ou: admin
+uniqueMember: uid=john,ou=people,dc=memorynotfound,dc=com
